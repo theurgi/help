@@ -1,0 +1,25 @@
+# build output
+*.tgz
+dist
+target
+
+# cache
+.eslintcache
+
+# coverage
+.nyc_output
+coverage
+
+# dependencies
+.pnpm-store/
+node_modules/
+package-lock.json
+yarn.lock
+
+# logs
+*.log
+logs
+npm-debug.log*
+
+# os
+.DS_Store
