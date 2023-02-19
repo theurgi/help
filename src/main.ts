@@ -147,6 +147,8 @@ export const heading: Generator<Heading> = (
 
 // ───────────────────────────────────────────── table ─────────────────────────────────────────────
 
+export type TableAlignment = 'center' | 'justify' | 'left' | 'right'
+
 export type TableOptions = {
 	/**
 	 * The level of indentation for the table. Defaults to 1.
@@ -156,6 +158,14 @@ export type TableOptions = {
 	 * The number of spaces between columns. Defaults to 2.
 	 */
 	columnGap: number
+	/**
+	 * The alignment of the left column. Defaults to 'left'.
+	 */
+	leftColAlign: TableAlignment
+	/**
+	 * The alignment of the right column. Defaults to 'left'.
+	 */
+	rightColAlign: TableAlignment
 }
 
 type Table = (data: [string, string][], options?: Partial<TableOptions>) => RenderFunction
@@ -174,6 +184,8 @@ export const table: Generator<Table> = (
 	const defaultOptions: TableOptions = {
 		indentLevel: 1,
 		columnGap: 2,
+		leftColAlign: 'left',
+		rightColAlign: 'left',
 	}
 
 	const userOptions: TableOptions = {
@@ -181,16 +193,16 @@ export const table: Generator<Table> = (
 		...options,
 	}
 
-	const { indentLevel, columnGap } = userOptions
+	const { indentLevel, columnGap, leftColAlign, rightColAlign } = userOptions
 
 	return (helpOptions: HelpOptions): string => {
 		const { maxWidth, indentSpaces } = helpOptions
 
 		const indent = getIndent(indentLevel, indentSpaces)
 
-		const firstColWidth = Math.max(0, ...data.map(([firstCol]) => stripAnsi(firstCol).length))
+		const leftColWidth = Math.max(0, ...data.map(([firstCol]) => stripAnsi(firstCol).length))
 
-		const secondColWidth = maxWidth - firstColWidth - columnGap - indent.length
+		const rightColWidth = maxWidth - leftColWidth - columnGap - indent.length
 
 		const tableConfig: xTableConfig = {
 			singleLine: true,
@@ -200,11 +212,12 @@ export const table: Generator<Table> = (
 			},
 			columns: {
 				0: {
+					alignment: leftColAlign,
 					paddingLeft: indent.length,
 					paddingRight: columnGap,
-					width: firstColWidth,
+					width: leftColWidth,
 				},
-				1: { paddingLeft: 0, paddingRight: 0, width: secondColWidth },
+				1: { alignment: rightColAlign, paddingLeft: 0, paddingRight: 0, width: rightColWidth },
 			},
 		}
 

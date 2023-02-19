@@ -24,8 +24,8 @@ pnpm install @theurgi/help
 
 ### Extended examples
 
-- [Colorize with chalk](./examples/with_chalk/README.md)
-- [Extending built-in functions](./examples/extending_built-ins/README.md)
+- [Colorize with chalk](./examples/with-chalk/README.md)
+- [Extending built-in functions](./examples/extending-built-ins/README.md)
 
 ### Basic example
 
@@ -78,6 +78,7 @@ console.log(
 - [IndentSpaces](README.md#indentspaces)
 - [ParagraphOptions](README.md#paragraphoptions)
 - [RenderFunction](README.md#renderfunction)
+- [TableAlignment](README.md#tablealignment)
 - [TableOptions](README.md#tableoptions)
 
 ### Functions
@@ -179,7 +180,7 @@ Generate a 2 column table.
 
 Ƭ **Generator**<`T`\>: (...`parameters`: `Parameters`<`T`\>) => [`RenderFunction`](README.md#renderfunction)
 
-> ⚠️ **NOTE:** A `Generator` in the context of this package has no relation to, and should not be confused with, [JavaScript Generators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*).
+> ⚠️ **NOTE:** A `Generator` in the context of this package has no relation to [JavaScript Generators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*).
 
 A `Generator` is a function that is called inside the [`HelpConfig.display`](README.md#helpconfig) array
 of the main [`help`](README.md#help) function and returns a [`RenderFunction`](README.md#renderfunction).
@@ -221,7 +222,7 @@ of the main [`help`](README.md#help) function and returns a [`RenderFunction`](R
 
 | Name          | Type                                   | Description                               | Default |
 | :------------ | :------------------------------------- | :---------------------------------------- | :-----: |
-| `indentLevel` | [`IndentLevel`](README.md#indentlevel) | The level of indentation for the heading. |    0    |
+| `indentLevel` | [`IndentLevel`](README.md#indentlevel) | The level of indentation for the heading. |   `0`   |
 
 ---
 
@@ -246,7 +247,7 @@ of the main [`help`](README.md#help) function and returns a [`RenderFunction`](R
 
 | Name           | Type                                     | Description                                           |       Default       |
 | :------------- | :--------------------------------------- | :---------------------------------------------------- | :-----------------: |
-| `indentSpaces` | [`IndentSpaces`](README.md#indentspaces) | The number of spaces used for each indentation level. |          2          |
+| `indentSpaces` | [`IndentSpaces`](README.md#indentspaces) | The number of spaces used for each indentation level. |         `2`         |
 | `maxWidth`     | `number`                                 | The maximum width of the help text in characters.     | The terminal width. |
 
 ---
@@ -275,7 +276,7 @@ The number of spaces per [`IndentLevel`](README.md#indentlevel).
 
 | Name          | Type                                   | Description                                 | Default |
 | :------------ | :------------------------------------- | :------------------------------------------ | :-----: |
-| `indentLevel` | [`IndentLevel`](README.md#indentlevel) | The level of indentation for the paragraph. |    0    |
+| `indentLevel` | [`IndentLevel`](README.md#indentlevel) | The level of indentation for the paragraph. |   `0`   |
 
 ---
 
@@ -302,13 +303,23 @@ global [`HelpOptions`](README.md#helpoptions) by the main [`help`](README.md#hel
 
 ---
 
+#### TableAlignment
+
+Ƭ **TableOptions**: 'center' | 'justify' | 'left' | 'right'
+
+The horizontal alignment of a [`table`](README.md#table) column.
+
+---
+
 #### TableOptions
 
 Ƭ **TableOptions**: `Object`
 
 ##### Type declaration
 
-| Name          | Type                                   | Description                             | Default |
-| :------------ | :------------------------------------- | :-------------------------------------- | :-----: |
-| `columnGap`   | `number`                               | The number of spaces between columns.   |    2    |
-| `indentLevel` | [`IndentLevel`](README.md#indentlevel) | The level of indentation for the table. |    1    |
+| Name            | Type                                         | Description                             | Default  |
+| :-------------- | :------------------------------------------- | :-------------------------------------- | :------: |
+| `columnGap`     | `number`                                     | The number of spaces between columns.   |   `2`    |
+| `indentLevel`   | [`IndentLevel`](README.md#indentlevel)       | The level of indentation for the table. |   `1`    |
+| `leftColAlign`  | [`TableAlignment`](README.md#tablealignment) | The alignment of the left column.       | `'left'` |
+| `rightColAlign` | [`TableAlignment`](README.md#tablealignment) | The alignment of the right column       | `'left'` |
