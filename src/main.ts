@@ -40,31 +40,30 @@ const getIndent = (indentLevel: IndentLevel, indentSpaces: IndentSpaces): string
 // ─────────────────────────────────────────────────────────────────────────────────────────────────
 
 /**
- * The type of function that must be returned by a `Generator`. This function will be called with
- * global `HelpOptions` by the main `help` function to render a formatted string.
- */
-export type RenderFunction = (options: HelpOptions) => string
-
-/**
- * A function that returns a `RenderFunction` and is called inside the `helpConfig.display` array
- * parameter of the main `help` function.
+ * A `Generator` is a function that is called inside the `HelpConfig.display` array of the main
+ * `help` function and returns a `RenderFunction`.
  *
- * The primary purpose of a `Generator` is to wrap a `RenderFunction` to receive and apply any
- * instance level overrides before the `RenderFunction` is called by `help` to render the string.
- *
- * This pattern allows for a functional API that looks visually similar to `help`'s final output.
+ * The purpose of a `Generator` is to receive and apply instance overrides before the
+ * `RenderFunction` is called by `help` to render the string. This pattern allows for a functional
+ * API that looks visually similar to `help`'s final output.
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type Generator<T extends (...parameters: any) => RenderFunction> = (
 	...parameters: Parameters<T>
 ) => RenderFunction
 
+/**
+ * The type of function that must be returned by a `Generator`. This function will be called with
+ * global `HelpOptions` by the main `help` function to render a formatted string.
+ */
+export type RenderFunction = (helpOptions: HelpOptions) => string
+
 // ───────────────────────────────────────────── space ─────────────────────────────────────────────
 
 type Space = (newlines?: number) => RenderFunction
 
 /**
- * Generates blank newlines.
+ * Generate blank newlines.
  * @param newlines The number of newlines to render. Defaults to 1.
  */
 export const space: Generator<Space> = (newlines = 1): RenderFunction => {
@@ -75,7 +74,7 @@ export const space: Generator<Space> = (newlines = 1): RenderFunction => {
 
 export type ParagraphOptions = {
 	/**
-	 * The level of indentation for the heading. Defaults to 1.
+	 * The level of indentation for the heading. Defaults to 0.
 	 */
 	indentLevel: IndentLevel
 }
@@ -83,16 +82,16 @@ export type ParagraphOptions = {
 type Paragraph = (text: string, options?: Partial<ParagraphOptions>) => RenderFunction
 
 /**
- * Generates a paragraph.
+ * Generate a paragraph.
  * @param text The paragraph text.
  * @param options The paragraph options.
- * @param options.indentLevel The level of indentation for the heading. Defaults to 1.
+ * @param options.indentLevel The level of indentation for the heading. Defaults to 0.
  */
 export const paragraph: Generator<Paragraph> = (
 	text: string,
 	options?: Partial<ParagraphOptions>
 ): RenderFunction => {
-	const defaultOptions: ParagraphOptions = { indentLevel: 1 }
+	const defaultOptions: ParagraphOptions = { indentLevel: 0 }
 
 	const userOptions: ParagraphOptions = { ...defaultOptions, ...options }
 
@@ -125,7 +124,7 @@ export type HeadingOptions = {
 type Heading = (text: string, options?: Partial<HeadingOptions>) => RenderFunction
 
 /**
- * Generates a heading.
+ * Generate a heading.
  * @param text The heading text.
  * @param options The heading options.
  * @param options.indentLevel The level of indentation for the heading. Defaults to 0.
@@ -162,7 +161,7 @@ export type TableOptions = {
 type Table = (data: [string, string][], options?: Partial<TableOptions>) => RenderFunction
 
 /**
- * Generates a 2 column table.
+ * Generate a 2 column table.
  * @param data The table data.
  * @param options The table options.
  * @param options.indentLevel The level of indentation for the table. Defaults to 1.
@@ -184,8 +183,8 @@ export const table: Generator<Table> = (
 
 	const { indentLevel, columnGap } = userOptions
 
-	return (options: HelpOptions): string => {
-		const { maxWidth, indentSpaces } = options
+	return (helpOptions: HelpOptions): string => {
+		const { maxWidth, indentSpaces } = helpOptions
 
 		const indent = getIndent(indentLevel, indentSpaces)
 
@@ -223,12 +222,11 @@ export const table: Generator<Table> = (
 
 export type HelpOptions = {
 	/**
-	 * The maximum width of the help text in number of characters.
+	 * The maximum width of the help text in characters. Defaults to the terminal width.
 	 */
 	maxWidth: number
 	/**
-	 * The number of spaces used for each indentation level.
-	 * Defaults to 2.
+	 * The number of spaces used for each indentation level. Defaults to 2.
 	 */
 	indentSpaces: IndentSpaces
 }
@@ -250,8 +248,7 @@ export type HelpConfig = {
  * @param helpConfig The help configuration.
  *
  * @param helpConfig.options The global options for the help text.
- * @param helpConfig.options.maxWidth The maximum width of the help text in number of characters.
- * Defaults to the terminal width.
+ * @param helpConfig.options.maxWidth The maximum width of the help text in characters. Defaults to the terminal width.
  * @param helpConfig.options.indentSpaces The number of spaces per indentation level. Defaults to 2.
  *
  * @param helpConfig.display An array in which to call `Generator` functions to render portions of
