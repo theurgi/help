@@ -275,7 +275,7 @@ export type HelpConfig = {
  *
  * These generators can be extended and custom generators can be supplied.
  *
- * @see[docs](https://github.com/theurgi/help/README.md) TODO: Add a link to the docs.
+ * @see[docs](https://github.com/theurgi/help#generator)
  */
 export const help = ({ options, display }: HelpConfig): string => {
 	const minWidth = 30
