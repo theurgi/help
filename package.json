@@ -5,6 +5,11 @@
 		"access": "public"
 	},
 	"description": "Generate formatted help text for Node.js CLIs",
+	"keywords": [
+		"nodejs",
+		"cli",
+		"help"
+	],
 	"license": "MIT",
 	"repository": "https://github.com/theurgi/help",
 	"author": "theurgi",
