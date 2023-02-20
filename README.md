@@ -38,7 +38,7 @@ pnpm install @theurgi/help
 
 - [Coloring with chalk](https://github.com/theurgi/help/tree/main/examples/with-chalk)
 - [Extending built-in functions](https://github.com/theurgi/help/tree/main/examples/extending-built-ins)
-- [Cloning Astro's help text](https://github.com/theurgi/help/tree/main/examples/)
+- [Cloning Astro's help text](https://github.com/theurgi/help/tree/main/examples/astro-clone)
 
 ### Basic example
 
