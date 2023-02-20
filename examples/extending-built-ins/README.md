@@ -1,7 +1,8 @@
 # Extending built-in Generators
 
-In this example we'll extend the built-in `heading` `Generator` to render uppercase text with a
+In this example we extend the built-in `heading` Generator to render uppercase text with a
 padded, colored background. Extending built-ins is useful for customization, reuse, and portability.
+For more info on Generators see the [API docs](https://github.com/theurgi/help#generator).
 
 <br>
 
@@ -17,7 +18,7 @@ padded, colored background. Extending built-ins is useful for customization, reu
 
 ## Import modules
 
-First we'll import `help` along with its built-in Generators and [chalk](https://github.com/chalk/chalk) for coloring.
+First, import `help` along with its built-in Generators and [chalk](https://github.com/chalk/chalk) for coloring.
 
 ```ts
 import chalk from 'chalk'
@@ -26,12 +27,12 @@ import { help, heading, paragraph, space, table } from '@theurgi/help'
 
 ## Extending the `heading` Generator
 
-Next, we'll define a function `myHeading` which can accept any arguments, but in this case only one:
+Next, define a function `myHeading` which can accept any arguments, but in this case only one:
 `text`. `myHeading` will "wrap" `heading` to apply our desired modifications to the `text` before
 passing it to `heading`.
 
-The only rule for extending a built-in is that the extending function ( `myHeading` ) should return the
-`RenderFunction` that is returned by calling the built-in being extended ( `heading` ).
+The only rule for extending a built-in is that the extending function ( `myHeading` ) should return
+the `RenderFunction` that is returned by calling the built-in being extended ( `heading` ).
 
 ```ts
 const myHeading = (text: string) => {
@@ -42,7 +43,7 @@ const myHeading = (text: string) => {
 
 ## Using our extended Generator
 
-Now we can simply use `myHeading` just as any built-in Generator.
+Now simply use `myHeading` just as any built-in Generator.
 
 ```ts
 console.log(

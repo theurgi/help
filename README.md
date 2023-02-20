@@ -1,10 +1,22 @@
-# help
+<br>
 
+<p align="center">
+	<img src="./help.png" width="300">
+</p>
+
+<p align="center">
 Generate formatted help text for Node.js CLIs.
+</p>
 
-This simple package doesn't attempt to parse arguments as a more comprehensive CLI framework might.
+<p align="center">
+  <a href="https://www.npmjs.com/package/@theurgi/help"><img src="https://img.shields.io/npm/v/@theurgi/help?color=5E81AC&label=semantic-release"></a>
+<p>
+
+<br>
+
+`help` doesn't attempt to parse arguments as some more comprehensive CLI frameworks do.
 Instead, it aims to be an unopinionated primitive that can be used as a stand-alone utility or as a
-building block within a more comprehensive CLI framework.
+building block within a more comprehensive CLI framework
 
 ## Features
 
@@ -24,8 +36,9 @@ pnpm install @theurgi/help
 
 ### Extended examples
 
-- [Colorize with chalk](./examples/with-chalk/README.md)
-- [Extending built-in functions](./examples/extending-built-ins/README.md)
+- [Coloring with chalk](https://github.com/theurgi/help/tree/main/examples/with-chalk)
+- [Extending built-in functions](https://github.com/theurgi/help/tree/main/examples/extending-built-ins)
+- [Cloning Astro's help text](https://github.com/theurgi/help/tree/main/examples/)
 
 ### Basic example
 
@@ -62,24 +75,24 @@ console.log(
 
 #### Functions
 
-- [help](README.md#help)
-- [heading](README.md#heading)
-- [paragraph](README.md#paragraph)
-- [space](README.md#space)
-- [table](README.md#table)
+- [help](#help)
+- [heading](#heading)
+- [paragraph](#paragraph)
+- [space](#space)
+- [table](#table)
 
 #### Types
 
-- [Generator](README.md#generator)
-- [HeadingOptions](README.md#headingoptions)
-- [HelpConfig](README.md#helpconfig)
-- [HelpOptions](README.md#helpoptions)
-- [IndentLevel](README.md#indentlevel)
-- [IndentSpaces](README.md#indentspaces)
-- [ParagraphOptions](README.md#paragraphoptions)
-- [RenderFunction](README.md#renderfunction)
-- [TableAlignment](README.md#tablealignment)
-- [TableOptions](README.md#tableoptions)
+- [Generator](#generator)
+- [HeadingOptions](#headingoptions)
+- [HelpConfig](#helpconfig)
+- [HelpOptions](#helpoptions)
+- [IndentLevel](#indentlevel)
+- [IndentSpaces](#indentspaces)
+- [ParagraphOptions](#paragraphoptions)
+- [RenderFunction](#renderfunction)
+- [TableAlignment](#tablealignment)
+- [TableOptions](#tableoptions)
 
 ### Functions
 
@@ -91,9 +104,9 @@ Generate formatted help text for Node.js CLIs.
 
 ##### Parameters
 
-| Name         | Type                                 | Description             |
-| :----------- | :----------------------------------- | :---------------------- |
-| `helpConfig` | [`HelpConfig`](README.md#helpconfig) | The help configuration. |
+| Name         | Type                        | Description             |
+| :----------- | :-------------------------- | :---------------------- |
+| `helpConfig` | [`HelpConfig`](#helpconfig) | The help configuration. |
 
 ##### Returns
 
@@ -103,45 +116,45 @@ Generate formatted help text for Node.js CLIs.
 
 #### heading
 
-▸ **heading**(`text`, `options?`): [`RenderFunction`](README.md#renderfunction)
+▸ **heading**(`text`, `options?`): [`RenderFunction`](#renderfunction)
 
 Generate a heading.
 
 ##### Parameters
 
-| Name       | Type                                                   | Description          |
-| :--------- | :----------------------------------------------------- | :------------------- |
-| `text`     | `string`                                               | The heading text.    |
-| `options?` | `Partial`<[HeadingOptions](README.md#headingoptions)\> | The heading options. |
+| Name       | Type                                          | Description          |
+| :--------- | :-------------------------------------------- | :------------------- |
+| `text`     | `string`                                      | The heading text.    |
+| `options?` | `Partial`<[HeadingOptions](#headingoptions)\> | The heading options. |
 
 ##### Returns
 
-[`RenderFunction`](README.md#renderfunction)
+[`RenderFunction`](#renderfunction)
 
 ---
 
 #### paragraph
 
-▸ **paragraph**(`text`, `options?`): [`RenderFunction`](README.md#renderfunction)
+▸ **paragraph**(`text`, `options?`): [`RenderFunction`](#renderfunction)
 
 Generate a paragraph.
 
 ##### Parameters
 
-| Name       | Type                                                       | Description            |
-| :--------- | :--------------------------------------------------------- | :--------------------- |
-| `text`     | `string`                                                   | The paragraph text.    |
-| `options?` | `Partial`<[ParagraphOptions](README.md#paragraphoptions)\> | The paragraph options. |
+| Name       | Type                                              | Description            |
+| :--------- | :------------------------------------------------ | :--------------------- |
+| `text`     | `string`                                          | The paragraph text.    |
+| `options?` | `Partial`<[ParagraphOptions](#paragraphoptions)\> | The paragraph options. |
 
 ##### Returns
 
-[`RenderFunction`](README.md#renderfunction)
+[`RenderFunction`](#renderfunction)
 
 ---
 
 #### space
 
-▸ **space**(`newlines?`): [`RenderFunction`](README.md#renderfunction)
+▸ **space**(`newlines?`): [`RenderFunction`](#renderfunction)
 
 Generate blank newlines.
 
@@ -153,54 +166,54 @@ Generate blank newlines.
 
 ##### Returns
 
-[`RenderFunction`](README.md#renderfunction)
+[`RenderFunction`](#renderfunction)
 
 ---
 
 #### table
 
-▸ **table**(`data`, `options?`): [`RenderFunction`](README.md#renderfunction)
+▸ **table**(`data`, `options?`): [`RenderFunction`](#renderfunction)
 
 Generate a 2 column table.
 
 ##### Parameters
 
-| Name       | Type                                               | Description                                                                                                                                    |
-| :--------- | :------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------- |
-| `data`     | `[string, string][]`                               | An array of string tuples where `data[n][0]` is typically a CLI command or option and `data[n][1]` is typically a description of `data[n][0]`. |
-| `options?` | `Partial`<[TableOptions](README.md#tableoptions)\> | The table options.                                                                                                                             |
+| Name       | Type                                      | Description                                                                                                                                    |
+| :--------- | :---------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------- |
+| `data`     | `[string, string][]`                      | An array of string tuples where `data[n][0]` is typically a CLI command or option and `data[n][1]` is typically a description of `data[n][0]`. |
+| `options?` | `Partial`<[TableOptions](#tableoptions)\> | The table options.                                                                                                                             |
 
 ##### Returns
 
-[`RenderFunction`](README.md#renderfunction)
+[`RenderFunction`](#renderfunction)
 
 ### Type Aliases
 
 #### Generator
 
-Ƭ **Generator**<`T`\>: (...`parameters`: `Parameters`<`T`\>) => [`RenderFunction`](README.md#renderfunction)
+Ƭ **Generator**<`T`\>: (...`parameters`: `Parameters`<`T`\>) => [`RenderFunction`](#renderfunction)
 
-> ⚠️ **NOTE:** A `Generator` in the context of this package has no relation to [JavaScript Generators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*).
+> **NOTE:** A `Generator` in the context of `help` has no relation to [JavaScript Generators](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*).
 
-A `Generator` is a function that is called inside the [`HelpConfig.display`](README.md#helpconfig) array
-of the main [`help`](README.md#help) function and returns a [`RenderFunction`](README.md#renderfunction).
+A `Generator` is a function that is called inside the [`HelpConfig.display`](#helpconfig) array
+of the main [`help`](#help) function and returns a [`RenderFunction`](#renderfunction).
 
 ##### Built-in Generators
 
-- [`heading`](README.md#heading)
-- [`paragraph`](README.md#paragraph)
-- [`space`](README.md#space)
-- [`table`](README.md#table)
+- [`heading`](#heading)
+- [`paragraph`](#paragraph)
+- [`space`](#space)
+- [`table`](#table)
 
 ##### Type parameters
 
-| Name | Type                                                                             |
-| :--- | :------------------------------------------------------------------------------- |
-| `T`  | extends (...`parameters`: `any`) => [`RenderFunction`](README.md#renderfunction) |
+| Name | Type                                                                    |
+| :--- | :---------------------------------------------------------------------- |
+| `T`  | extends (...`parameters`: `any`) => [`RenderFunction`](#renderfunction) |
 
 ##### Type declaration
 
-▸ (`...parameters`): [`RenderFunction`](README.md#renderfunction)
+▸ (`...parameters`): [`RenderFunction`](#renderfunction)
 
 ##### Parameters
 
@@ -210,7 +223,7 @@ of the main [`help`](README.md#help) function and returns a [`RenderFunction`](R
 
 ##### Returns
 
-[`RenderFunction`](README.md#renderfunction)
+[`RenderFunction`](#renderfunction)
 
 ---
 
@@ -220,9 +233,9 @@ of the main [`help`](README.md#help) function and returns a [`RenderFunction`](R
 
 ##### Type declaration
 
-| Name          | Type                                   | Description                               | Default |
-| :------------ | :------------------------------------- | :---------------------------------------- | :-----: |
-| `indentLevel` | [`IndentLevel`](README.md#indentlevel) | The level of indentation for the heading. |   `0`   |
+| Name          | Type                          | Description                               | Default |
+| :------------ | :---------------------------- | :---------------------------------------- | :-----: |
+| `indentLevel` | [`IndentLevel`](#indentlevel) | The level of indentation for the heading. |   `0`   |
 
 ---
 
@@ -232,10 +245,10 @@ of the main [`help`](README.md#help) function and returns a [`RenderFunction`](R
 
 ##### Type declaration
 
-| Name       | Type                                               | Description                                                                                                 |
-| :--------- | :------------------------------------------------- | :---------------------------------------------------------------------------------------------------------- |
-| `display`  | [`RenderFunction`](README.md#renderfunction)[]     | An array in which to call [`Generator`](README.md#generator) functions to render portions of the help text. |
-| `options?` | `Partial`<[`HelpOptions`](README.md#helpoptions)\> | Global options for the help text.                                                                           |
+| Name       | Type                                      | Description                                                                                        |
+| :--------- | :---------------------------------------- | :------------------------------------------------------------------------------------------------- |
+| `display`  | [`RenderFunction`](#renderfunction)[]     | An array in which to call [`Generator`](#generator) functions to render portions of the help text. |
+| `options?` | `Partial`<[`HelpOptions`](#helpoptions)\> | Global options for the help text.                                                                  |
 
 ---
 
@@ -245,10 +258,10 @@ of the main [`help`](README.md#help) function and returns a [`RenderFunction`](R
 
 ##### Type declaration
 
-| Name           | Type                                     | Description                                           |       Default       |
-| :------------- | :--------------------------------------- | :---------------------------------------------------- | :-----------------: |
-| `indentSpaces` | [`IndentSpaces`](README.md#indentspaces) | The number of spaces used for each indentation level. |         `2`         |
-| `maxWidth`     | `number`                                 | The maximum width of the help text in characters.     | The terminal width. |
+| Name           | Type                            | Description                                           |       Default       |
+| :------------- | :------------------------------ | :---------------------------------------------------- | :-----------------: |
+| `indentSpaces` | [`IndentSpaces`](#indentspaces) | The number of spaces used for each indentation level. |         `2`         |
+| `maxWidth`     | `number`                        | The maximum width of the help text in characters.     | The terminal width. |
 
 ---
 
@@ -256,7 +269,7 @@ of the main [`help`](README.md#help) function and returns a [`RenderFunction`](R
 
 Ƭ **IndentLevel**: `number`
 
-The number of times to left pad a string with [`IndentSpaces`](README.md#indentspaces) spaces.
+The number of times to left pad a string with [`IndentSpaces`](#indentspaces) spaces.
 
 ---
 
@@ -264,7 +277,7 @@ The number of times to left pad a string with [`IndentSpaces`](README.md#indents
 
 Ƭ **IndentSpaces**: `number`
 
-The number of spaces per [`IndentLevel`](README.md#indentlevel).
+The number of spaces per [`IndentLevel`](#indentlevel).
 
 ---
 
@@ -274,28 +287,28 @@ The number of spaces per [`IndentLevel`](README.md#indentlevel).
 
 ##### Type declaration
 
-| Name          | Type                                   | Description                                 | Default |
-| :------------ | :------------------------------------- | :------------------------------------------ | :-----: |
-| `indentLevel` | [`IndentLevel`](README.md#indentlevel) | The level of indentation for the paragraph. |   `0`   |
+| Name          | Type                          | Description                                 | Default |
+| :------------ | :---------------------------- | :------------------------------------------ | :-----: |
+| `indentLevel` | [`IndentLevel`](#indentlevel) | The level of indentation for the paragraph. |   `0`   |
 
 ---
 
 #### RenderFunction
 
-Ƭ **RenderFunction**: (`helpOptions`: [`HelpOptions`](README.md#helpoptions)) => `string`
+Ƭ **RenderFunction**: (`helpOptions`: [`HelpOptions`](#helpoptions)) => `string`
 
 ##### Type declaration
 
 ▸ (`helpOptions`): `string`
 
-The type of function that must be returned by a [`Generator`](README.md#generator). This function will be called with
-global [`HelpOptions`](README.md#helpoptions) by the main [`help`](README.md#help) function to render a formatted string.
+The type of function that must be returned by a [`Generator`](#generator). This function will be called with
+global [`HelpOptions`](#helpoptions) by the main [`help`](#help) function to render a formatted string.
 
 ##### Parameters
 
-| Name          | Type                                   |
-| :------------ | :------------------------------------- |
-| `helpOptions` | [`HelpOptions`](README.md#helpoptions) |
+| Name          | Type                          |
+| :------------ | :---------------------------- |
+| `helpOptions` | [`HelpOptions`](#helpoptions) |
 
 ##### Returns
 
@@ -307,7 +320,7 @@ global [`HelpOptions`](README.md#helpoptions) by the main [`help`](README.md#hel
 
 Ƭ **TableOptions**: 'center' | 'justify' | 'left' | 'right'
 
-The horizontal alignment of a [`table`](README.md#table) column.
+The horizontal alignment of a [`table`](#table) column.
 
 ---
 
@@ -317,9 +330,9 @@ The horizontal alignment of a [`table`](README.md#table) column.
 
 ##### Type declaration
 
-| Name            | Type                                         | Description                             | Default  |
-| :-------------- | :------------------------------------------- | :-------------------------------------- | :------: |
-| `columnGap`     | `number`                                     | The number of spaces between columns.   |   `2`    |
-| `indentLevel`   | [`IndentLevel`](README.md#indentlevel)       | The level of indentation for the table. |   `1`    |
-| `leftColAlign`  | [`TableAlignment`](README.md#tablealignment) | The alignment of the left column.       | `'left'` |
-| `rightColAlign` | [`TableAlignment`](README.md#tablealignment) | The alignment of the right column       | `'left'` |
+| Name            | Type                                | Description                             | Default  |
+| :-------------- | :---------------------------------- | :-------------------------------------- | :------: |
+| `columnGap`     | `number`                            | The number of spaces between columns.   |   `2`    |
+| `indentLevel`   | [`IndentLevel`](#indentlevel)       | The level of indentation for the table. |   `1`    |
+| `leftColAlign`  | [`TableAlignment`](#tablealignment) | The alignment of the left column.       | `'left'` |
+| `rightColAlign` | [`TableAlignment`](#tablealignment) | The alignment of the right column       | `'left'` |
